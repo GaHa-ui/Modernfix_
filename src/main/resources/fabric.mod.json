@@ -1,5 +1,21 @@
 {
-    "client": [
-        "com.modernfix.mixin.PlayerHitboxMixin"
-    ]
+    "schemaVersion": 1,
+    "id": "modernfix",
+    "version": "${version}",
+    "name": "ModernFix",
+    "description": "Performance and visual improvements",
+    "authors": ["ModernFix Team"],
+    "contact": {},
+    "license": "MIT",
+    "icon": "assets/modernfix/icon.png",
+    "environment": "client",
+    "entrypoints": {
+        "client": ["com.modernfix.client.ModernFixClient"]
+    },
+    "mixins": ["modernfix.mixins"],
+    "depends": {
+        "fabricloader": ">=0.16",
+        "minecraft": "1.21.x",
+        "java": ">=21"
+    }
 }
