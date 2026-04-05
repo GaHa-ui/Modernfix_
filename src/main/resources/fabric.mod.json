@@ -3,9 +3,13 @@
     "id": "modernfix",
     "version": "${version}",
     "name": "ModernFix",
-    "description": "Performance and visual improvements",
-    "authors": ["ModernFix Team"],
-    "contact": {},
+    "description": "ModernFix is a Minecraft mod that improves the game's performance and fix bugs. This version includes optimizations for 1.21.11 and bugfixes for better gameplay experience.",
+    "authors": ["游客xMcDgTx"],
+    "contact": {
+        "homepage": "https://github.com/游客xMcDgTx/ModernFix",
+        "issues": "https://github.com/游客xMcDgTx/ModernFix/issues",
+        "source": "https://github.com/游客xMcDgTx/ModernFix"
+    },
     "license": "MIT",
     "icon": "assets/modernfix/icon.png",
     "environment": "client",
