@@ -34,21 +34,21 @@ public class ModernFixClient implements ClientModInitializer {
             "key.modernfix.expand",
             InputUtil.Type.KEYSYM,
             GLFW.GLFW_KEY_P,
-            KeyBinding.Category.MISC
+            "key.categories.misc"
         ));
 
         resetKey = KeyBindingHelper.registerKeyBinding(new KeyBinding(
             "key.modernfix.reset",
             InputUtil.Type.KEYSYM,
             GLFW.GLFW_KEY_L,
-            KeyBinding.Category.MISC
+            "key.categories.misc"
         ));
         
         toggleKey = KeyBindingHelper.registerKeyBinding(new KeyBinding(
             "key.modernfix.toggle",
             InputUtil.Type.KEYSYM,
             GLFW.GLFW_KEY_K,
-            KeyBinding.Category.MISC
+            "key.categories.misc"
         ));
 
         ClientTickEvents.END_CLIENT_TICK.register(client -> {
