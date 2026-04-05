@@ -1,0 +1,5 @@
+{
+    "client": [
+        "com.modernfix.mixin.PlayerHitboxMixin"
+    ]
+}
