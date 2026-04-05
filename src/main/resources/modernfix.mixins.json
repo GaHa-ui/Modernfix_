@@ -3,7 +3,7 @@
     "minVersion": "0.8",
     "package": "com.modernfix.mixin",
     "compatibilityLevel": "JAVA_21",
-    "client": ["PlayerHitboxMixin"],
+    "client": ["EntityMixin"],
     "injectors": {
         "defaultRequire": 1
     }

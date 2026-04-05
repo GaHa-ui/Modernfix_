@@ -14,6 +14,7 @@ public class ModernFixClient implements ClientModInitializer {
     public static final String MOD_ID = "modernfix";
     public static final Logger LOGGER = LoggerFactory.getLogger(MOD_ID);
 
+    public static boolean hitboxEnabled = false;
     public static float hitboxExpand = 0.0f;
     public static float targetExpand = 0.0f;
     
@@ -21,10 +22,8 @@ public class ModernFixClient implements ClientModInitializer {
     private KeyBinding resetKey;
     private KeyBinding toggleKey;
 
-    private boolean autoDisableOnHit = true;
-    private boolean smoothMode = true;
     private int ticksSinceAttack = 999;
-    private float lastExpand = 0f;
+    private float lastExpand = 0.15f;
 
     @Override
     public void onInitializeClient() {
@@ -56,38 +55,38 @@ public class ModernFixClient implements ClientModInitializer {
             if (client.player == null) return;
 
             if (toggleKey.wasPressed()) {
-                if (targetExpand > 0) {
-                    lastExpand = targetExpand;
+                hitboxEnabled = !hitboxEnabled;
+                if (!hitboxEnabled) {
                     targetExpand = 0f;
-                    LOGGER.info("Hitbox: OFF");
                 } else {
                     targetExpand = lastExpand;
-                    LOGGER.info("Hitbox: ON (was " + lastExpand + ")");
                 }
+                LOGGER.info("Hitbox: " + (hitboxEnabled ? "ON" : "OFF"));
             }
 
             if (expandKey.wasPressed()) {
                 targetExpand += 0.05f;
-                if (targetExpand > 1.0f) targetExpand = 1.0f;
+                if (targetExpand > 0.5f) targetExpand = 0.5f;
+                lastExpand = targetExpand;
+                hitboxEnabled = true;
                 LOGGER.info("Expand: " + String.format("%.2f", targetExpand));
             }
 
             if (resetKey.wasPressed()) {
                 targetExpand = 0.0f;
+                lastExpand = 0.15f;
                 LOGGER.info("Reset");
             }
 
             ticksSinceAttack++;
-            if (client.interactionManager != null && client.player != null) {
-                if (client.options.attackKey.isPressed()) {
-                    ticksSinceAttack = 0;
-                }
+            if (client.options.attackKey.isPressed()) {
+                ticksSinceAttack = 0;
             }
 
-            float speed = 0.015f;
+            float speed = 0.02f;
             
-            if (autoDisableOnHit && ticksSinceAttack < 5) {
-                speed = 0.1f;
+            if (ticksSinceAttack < 3) {
+                speed = 0.15f;
             }
             
             if (hitboxExpand < targetExpand) {

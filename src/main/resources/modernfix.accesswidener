@@ -1,5 +1,0 @@
-accessWidener v2 client
-
-# Allow modifying entity hitbox
-accessible method net/minecraft/class_1297 (Lnet/minecraft/class_1297;)F getWidth ()
-accessible method net/minecraft/class_1297 (Lnet/minecraft/class_1297;)F getHeight ()
